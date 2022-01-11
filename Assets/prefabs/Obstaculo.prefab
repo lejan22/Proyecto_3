@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1380801836059900567}
   - component: {fileID: 1380801836059900568}
   - component: {fileID: 1380801836059900569}
+  - component: {fileID: -4000020755256470013}
+  - component: {fileID: -3388421889265534705}
   m_Layer: 0
   m_Name: Obstaculo
   m_TagString: obstaculo
@@ -98,7 +100,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!65 &1380801836059900568
 BoxCollider:
@@ -125,4 +127,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5eb657661cab234ab7240600b2eef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
+--- !u!114 &-4000020755256470013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380801836957141984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52657322196e77343b7d6cb02cb08f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3388421889265534705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380801836957141984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0589e6ae0913e9f42a3d6aab3d81a120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5

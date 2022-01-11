@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Moveleft))]
 public class RepeatBackground : MonoBehaviour
 {
+  
     private Vector3 startPosition;
     public float repeatWidth;
     // Start is called before the first frame update

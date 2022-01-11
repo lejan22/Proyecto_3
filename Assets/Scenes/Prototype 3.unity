@@ -153,12 +153,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.92
+      value: 10.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5061291
+      value: 0.66102695
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8624578
+      value: -0.75036216
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 119.187
+      value: -97.244
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfaaab6f09a04ce4ca762fe21bff5557,
         type: 3}
@@ -204,6 +204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orbulon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bfaaab6f09a04ce4ca762fe21bff5557,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfaaab6f09a04ce4ca762fe21bff5557, type: 3}
@@ -327,13 +332,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277678990}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 40
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 88
   m_CollisionDetection: 0
 --- !u!114 &277678993
 MonoBehaviour:
@@ -344,11 +349,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 277678990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f5db98abf498744a8fea4fe8f25d53, type: 3}
+  m_Script: {fileID: 11500000, guid: 880d295603cb94c4a9b64c749ae708bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 400
-  gravityModifier: 1
+  speed: 50
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ed7723a915d8646a2931f09554ae3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 114304, guid: 3daef342e8f3f9548b04424eac7d4d0d, type: 3}
+  obstacle: {fileID: 1380801836957141984, guid: 333e4817043ac8b458fa0ee22a5da913,
+    type: 3}
   startDelay: 1
   repeatRate: 2
 --- !u!4 &591774345
@@ -489,13 +494,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: 3afad42cab5a57a4c9f19f8deaaf8689, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 3afad42cab5a57a4c9f19f8deaaf8689, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 3afad42cab5a57a4c9f19f8deaaf8689, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 3afad42cab5a57a4c9f19f8deaaf8689, type: 3}
       propertyPath: m_LocalPosition.y
@@ -719,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5eb657661cab234ab7240600b2eef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 15
 --- !u!1 &1846866971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100066, guid: 3afad42cab5a57a4c9f19f8deaaf8689,
@@ -734,13 +743,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846866971}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 60
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!65 &1846866973
 BoxCollider:
@@ -767,8 +776,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f5db98abf498744a8fea4fe8f25d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 400
-  gravityModifier: 1
+  jumpForce: 600
+  gravityModifier: 1.5
+  gameOver: 0
 --- !u!1 &2014335011
 GameObject:
   m_ObjectHideFlags: 0

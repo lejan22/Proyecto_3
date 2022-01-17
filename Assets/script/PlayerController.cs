@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier = 1;
     private bool isOnTheGround = true;
     public bool gameOver;
+    public ParticleSystem explosionParticleSystem;
+    public ParticleSystem dirtParticleSystem;
     // Start is called before the first frame update
-    
-    
+
+
     void Start()
     {
         gameOver = false;
@@ -33,28 +35,44 @@ public class PlayerController : MonoBehaviour
                 playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 isOnTheGround = false;
             playerAnimator.SetTrigger("Jump_trig");
-            }
+            //Parar particulas de tierra
+            dirtParticleSystem.Stop();
+        }
         
        
        
     }
     private void OnCollisionEnter(Collision otherCollider)
+
     {
-        //Utilizando los tags
-        if (otherCollider.gameObject.CompareTag("ground"))
+        //Si game over vale true, estoy ded, si vale false, estoy vivo.
+        //Si !gameOver vale true, estoy vivo, si vale false, estoy ded.
+        if (!gameOver)
         {
-            isOnTheGround = true;
-        }
+            //Utilizando los tags
+            if (otherCollider.gameObject.CompareTag("ground"))
+            {
+                isOnTheGround = true;
+                //Reiniciar al tocar el suelo las particulas
+                dirtParticleSystem.Play(); 
+            }
 
-        if (otherCollider.gameObject.CompareTag("obstaculo"))
-        {
-            // Ded
-            gameOver = true;
-            int randomDeath = Random.Range(1, 3);
-            playerAnimator.SetTrigger ("Death_b");
-            playerAnimator.SetInteger("DeathType.int", randomDeath);
+            if (otherCollider.gameObject.CompareTag("obstaculo"))
+            {
+                // Ded
+                gameOver = true;
+                int randomDeath = Random.Range(1, 3);
+                playerAnimator.SetTrigger("Death_b");
+                playerAnimator.SetInteger("DeathType.int", randomDeath);
 
+                //Particulas
+                Vector3 offset = new Vector3(0, 1.5f, 0);
+                Instantiate(explosionParticleSystem, transform.position + offset, explosionParticleSystem.transform.rotation);
+                //ParticleSystem explosionEscena = Instantiate(explosionParticleSystem, transform.position + new Vector3(0, 1.5f, 0), explosionParticleSystem.transform.rotation);
+                //explosionParticleSystem.Play();
+                //explosionEscena.Play();
+
+            }
         }
-        
     }
 }

@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    private AudioSource cameraAudioSource;
+    private AudioSource playerAudioSource;
     private Animator playerAnimator;
     private Rigidbody playerRigidbody;
     [SerializeField] private float jumpForce = 400f;
@@ -13,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool gameOver;
     public ParticleSystem explosionParticleSystem;
     public ParticleSystem dirtParticleSystem;
+    public AudioClip jumpClip;
+    public AudioClip crashClip;
+    private int lives = 3;
     // Start is called before the first frame update
 
 
@@ -23,6 +28,9 @@ public class PlayerController : MonoBehaviour
        
         Physics.gravity *= gravityModifier;
         playerAnimator = GetComponent<Animator>();
+        playerAudioSource = GetComponent<AudioSource>();
+        cameraAudioSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+        lives = 3;
     }
 
     // Update is called once per frame
@@ -37,6 +45,8 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("Jump_trig");
             //Parar particulas de tierra
             dirtParticleSystem.Stop();
+            //SFX salto
+            playerAudioSource.PlayOneShot(jumpClip,1);
         }
         
        
@@ -59,20 +69,36 @@ public class PlayerController : MonoBehaviour
 
             if (otherCollider.gameObject.CompareTag("obstaculo"))
             {
-                // Ded
-                gameOver = true;
-                int randomDeath = Random.Range(1, 3);
-                playerAnimator.SetTrigger("Death_b");
-                playerAnimator.SetInteger("DeathType.int", randomDeath);
+                Destroy(otherCollider.gameObject);
+                lives--;
+                if (lives<= 0)
+                {
+                    GameOver();
+                }
 
-                //Particulas
-                Vector3 offset = new Vector3(0, 1.5f, 0);
-                Instantiate(explosionParticleSystem, transform.position + offset, explosionParticleSystem.transform.rotation);
-                //ParticleSystem explosionEscena = Instantiate(explosionParticleSystem, transform.position + new Vector3(0, 1.5f, 0), explosionParticleSystem.transform.rotation);
-                //explosionParticleSystem.Play();
-                //explosionEscena.Play();
-
+                
             }
         }
+    }
+    private void GameOver()
+    {
+        // Ded
+        gameOver = true;
+        int randomDeath = Random.Range(1, 3);
+        playerAnimator.SetTrigger("Death_b");
+        playerAnimator.SetInteger("DeathType.int", randomDeath);
+
+        //Particulas
+        Vector3 offset = new Vector3(0, 1.5f, 0);
+        Instantiate(explosionParticleSystem, transform.position + offset, explosionParticleSystem.transform.rotation);
+        //ParticleSystem explosionEscena = Instantiate(explosionParticleSystem, transform.position + new Vector3(0, 1.5f, 0), explosionParticleSystem.transform.rotation);
+        //explosionParticleSystem.Play();
+        //explosionEscena.Play();
+
+        // Reproducir SFX de la explosón
+        playerAudioSource.PlayOneShot(crashClip, 1);
+
+        //bajar volumen de la musica de fondo
+        cameraAudioSource.volume = 0.01f;
     }
 }
